@@ -1,0 +1,4 @@
+name: CNV
+dependencies:
+- python=2.7
+- numpy
