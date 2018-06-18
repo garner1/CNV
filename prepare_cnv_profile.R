@@ -1,11 +1,11 @@
 library(QDNAseq)
 library(DNAcopy)
-# bins <- getBinAnnotations(binSize=10, genome="hg19")
-# saveRDS(bins,file = "bin_annotations_10kbp.rds")
+# bins <- getBinAnnotations(binSize=100, genome="hg19")
+# saveRDS(bins,file = "bin_annotations_100kbp.rds")
 bins <- readRDS("bin_annotations_100kbp.rds")
 # bins <- readRDS("bin_annotations_10kbp.rds")
 
-files <- list.files(path="/home/garner1/Work/dataset/WGS/bicro99_bamfiles", pattern = "\\.bam$", full.names=T, recursive=FALSE)
+files <- list.files(path="/home/garner1/Work/dataset/WGS", pattern = "\\.bam$", full.names=T, recursive=FALSE)
 # files <- list.files(path="/home/garner1/Work/dataset/CNV", pattern="bam$", full.names=T, recursive=FALSE)
 
 for (x in files){
@@ -25,6 +25,8 @@ for (x in files){
   filename <- paste(x,".bed", sep="")
   exportBins(copyNumbersSegmented, filename, format = "bed")  
   exportBins(copyNumbersCalled, format="vcf")
+  filename <- paste(x,".bed", sep="")
+  exportBins(copyNumbersCalled, filename, type = "segments", format="tsv")
 }
 
 plot(readCounts, logTransform=FALSE, ylim=c(-10, 200))

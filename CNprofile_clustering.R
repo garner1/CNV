@@ -12,7 +12,7 @@ bins <- readRDS("bin_annotations_100kbp.rds")
 # files <- list.files(path="/home/garner1/Work/dataset/reduced_sequencing/bamfiles_2_cluster_xz37/selection_GE500k", pattern=NULL, full.names=T, recursive=FALSE)
 # files <- list.files(path="/home/garner1/Work/dataset/reduced_sequencing/selection/all_bamfile/selection_GE1M", pattern=NULL, full.names=T, recursive=FALSE)
 
-files <- list.files(path="/home/garner1/Work/dataset/reduced_sequencing/bamfiles", pattern=NULL, full.names=T, recursive=FALSE)
+files <- list.files(path="/home/garner1/Work/dataset/reduced_sequencing/BreastCancer/NlaIII/bedfiles/", pattern=NULL, full.names=T, recursive=FALSE)
 
 for (x in files){
   readCounts <- binReadCounts(bins,bamfiles=x)  
@@ -33,12 +33,12 @@ for (x in files){
 #TO GET THE LABELS FROM THE SAMPLES
 # ls *signal|tr '_.' '\t\t'|cut -f1|datamash transpose |sed 's/\t/","/g'
 #########################
-temp = read.csv("/home/garner1/Work/dataset/reduced_sequencing/bamfiles/data.tsv", header = FALSE, sep="\t")
+temp = read.csv("/home/garner1/Work/dataset/reduced_sequencing/BreastCancer/NlaIII/bedfiles/group_3/data.tsv", header = FALSE, sep="\t")
 d <- dist(as.matrix(temp), method = "euclidean")
 hc1 <- hclust(d, method = "complete" )
 par(cex=0.6, mar=c(5, 8, 4, 1))
 plot(hc1,hang=0.1,
-     label=c("XZ114-GTCGTCGC","XZ115-GTCGTTCC","XZ117-CGTGTGAG","XZ118-GCTTGTCA","XZ119-ATTCGCGA","XZ120-CATCACGC","XZ121-CATCATCC","XZ122-TCACACGC","XZ82-CATCATCC","XZ83-TCACACGC","XZ85-CTAACTCA","XZ86-GAATCCGA","XZ88-GTCGTTCC","XZ89-CGTGTCGC","XZ90-CGTGTGAG","XZ91-CATCACGC"),
+     label=c("M10B","M11","M12A","M13A","M13B","M14A","M14B","M15A","M15B","M1A","M1B","M2A","M2B","M3A","M3B","M4A","M5A","M9A","M9B","T10A","T10B","T11","T12","T13","T14","T15","T16","T1","T2","T3","T4A","T4B","T5A","T5B"),
      main="Patients clustering")
 #########################
 temp = read.csv("/home/garner1/Work/dataset/reduced_sequencing/bamfiles_2_cluster_xz37/selection_GE500k/data.tsv", header = FALSE, sep="\t")
