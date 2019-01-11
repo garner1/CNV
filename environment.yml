@@ -2,3 +2,7 @@ name: CNV
 dependencies:
 - python=2.7
 - numpy
+- anaconda
+- bioconda
+- CNVkit
+- bioconductor-qdnaseq
