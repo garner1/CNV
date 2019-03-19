@@ -1,0 +1,5 @@
+library(QDNAseq)
+library(DNAcopy)
+library(BSgenome.Hsapiens.UCSC.hg19)
+bins <- createBins(BSgenome.Hsapiens.UCSC.hg19, 5000)
+saveRDS(bins,file = "bin_annotations_5Mbp.rds")

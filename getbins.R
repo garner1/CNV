@@ -1,0 +1,7 @@
+library(QDNAseq)
+library(DNAcopy)
+library(BSgenome.Hsapiens.UCSC.hg19)
+# bins <- getBinAnnotations(binSize=1500, genome="hg19")
+# bins <- readRDS("bin_annotations_10kbp.rds")
+bins <- createBins(BSgenome.Hsapiens.UCSC.hg19, 1500)
+saveRDS(bins,file = "bin_annotations_1.5Mbp.rds")
