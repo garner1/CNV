@@ -5,7 +5,7 @@ library(DNAcopy)
 bins <- getBinAnnotations(binSize=100, genome="hg19")
 #saveRDS(bins,file = "bin_annotations_10Mbp.rds")
 
-files <- list.files(path="/home/garner1/Work/dataset/bamfiles", pattern="\\.bam$", full.names=T, recursive=FALSE)
+files <- list.files(path="/home/garner1/Work/dataset/cutseq/bamfiles/xz98", pattern="\\.bam$", full.names=T, recursive=FALSE)
 
 for (x in files){
   readCounts <- binReadCounts(bins,bamfiles=x)  
