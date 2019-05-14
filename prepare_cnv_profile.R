@@ -2,11 +2,11 @@ library(QDNAseq)
 library(DNAcopy)
 
 #bins <- readRDS("bin_annotations_1Mbp.rds")
-bins <- getBinAnnotations(binSize=5, genome="hg19")
 #saveRDS(bins,file = "bin_annotations_10Mbp.rds")
 
-files <- list.files(path="/media/garner1/hdd2/cutseq/XZ174BICRO158/outdata", pattern="\\.bam$", full.names=T, recursive=FALSE)
-
+bins <- getBinAnnotations(binSize=100, genome="hg19")
+files <- list.files(path="/home/garner1/Work/dataset/bamfile", pattern="\\.bam$", full.names=T, recursive=FALSE)
+print(files)
 for (x in files){
   readCounts <- binReadCounts(bins,bamfiles=x)  
   readCountsFiltered <- applyFilters(readCounts,residual=TRUE, blacklist=TRUE)
