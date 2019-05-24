@@ -21,8 +21,8 @@ pdf(filename)
 plot(copyNumbersCalled)  
 dev.off()
 
-#filename <- paste(args[1],".bed", sep="")
-#exportBins(copyNumbersSegmented, filename, format = "bed")  
+filename <- paste(args[1],".bed", sep="")
+exportBins(copyNumbersSegmented, filename, format = "bed")  
 #exportBins(copyNumbersCalled, format="vcf")
 
 filename <- paste(args[1],".tsv",sep="")
