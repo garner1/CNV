@@ -1,11 +1,15 @@
+#!/usr/bin/env Rscript
+args = commandArgs(trailingOnly=TRUE)
+
 library(QDNAseq)
 library(DNAcopy)
 
 #bins <- readRDS("bin_annotations_1Mbp.rds")
 #saveRDS(bins,file = "bin_annotations_10Mbp.rds")
 
-bins <- getBinAnnotations(binSize=100, genome="hg19")
-files <- list.files(path="/home/garner1/Work/dataset/bamfile", pattern="\\.bam$", full.names=T, recursive=FALSE)
+bins <- getBinAnnotations(binSize=as.numeric(args[2]), genome="hg19")
+files <- list.files(path=args[1], pattern="\\.bam$", full.names=T, recursive=FALSE)
+
 print(files)
 for (x in files){
   readCounts <- binReadCounts(bins,bamfiles=x)  
@@ -27,5 +31,4 @@ for (x in files){
   filename <- paste(x,".tsv",sep="")
   exportBins(copyNumbersCalled, filename, type = "segments", format="tsv")
 }
-
 
